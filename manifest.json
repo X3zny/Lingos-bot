@@ -1,0 +1,48 @@
+{
+    "manifest_version": 3,
+    "name": "AutoLingo",
+    "version": "1.3.2",
+    "description": "Automatyczne Robienie lekcji w LINGOS.PL.",
+    
+    "background": {
+        "service_worker": "background.js"
+    },
+
+    "content_scripts": [
+        {
+            "matches": ["*://*.lingos.pl/*"],
+            "js": ["content.js"],
+            "run_at": "document_idle",
+            "all_frames": false
+        }
+    ],
+
+    "permissions": [
+        "storage",
+        "activeTab",
+        "tabs"
+    ],
+
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icons/icon16.png",
+            "48": "icons/icon48.png",
+            "128": "icons/icon128.png"
+        },
+        "default_title": "AutoLingo"
+    },
+
+    "web_accessible_resources": [
+        {
+            "resources": ["lang/*.json"],
+            "matches": ["*://*.lingos.pl/*"]
+        }
+    ],
+
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    }
+}
